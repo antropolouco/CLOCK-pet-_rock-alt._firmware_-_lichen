@@ -1,0 +1,377 @@
+lichen:
+an alt firmware for petrock.
+
+inspiration sprung whilst listening to lex fridman #359 - https://open.spotify.com/episode/6btFDX9xGa6yQErSNG7AMk?si=UrU5jBz3Qu2cutkOv3SncA (accessed 300923 1035)
+
+cellular automata type growth on 2 axes?
+
+
+rtc drives:
+
+selecition of chaotic/random based output dreviation:
+
+bernoulli styl but branches influencing eachotheers grwth.
+
+f(x, p) = px (1 - p)1 - x,    x  ϵ {0, 1}
+
+use fast simple rng and code based on the one opamp chaos?
+
+
+
+
+https://www.demonstrations.wolfram.com/SimplestChaoticCircuit/
+
+ it is specified by the minimum number of states (three) required for chaos: voltage across the capacitor , current through the inductor , and internal state of the memristor  (see [1]). The system equations are , , , where  is the inductance and  is unknown.
+
+
+
+elementary cellular automata:
+
+at time t== 0,1, ...,				a_i(t) = f(a_i-1(t-1),a_i(t-1),a_i+1(t-1)).	for i 'running from' -inf to inf 
+
+the simplest class of 1d cellular automata, 'elementary', are binary; i.e. can only be 0 or 1. therefore, rules based  on (lhs,cell,rhs) have 2x2x2=2^3=8 binary states for the three cells neighbouring a a given cell.  the 2^8 = 256 elemetary cellular automata indexed in format `rule[xxx] where [xxx] = (000 to 255), derived from table below:
+
+
+
+
+
+_nb: chaotic  cellula automat!_
+
+rule30: 00011110_2
+(p,q,r) |-> p xor (q or r)(p+q+r+qr)mod 2
+
+*used as rng for largev integers sometimes... 
+
+___________
+
+
+rule60
+(p,q,r) |->  p xor q
+(p+q)mod2
+
+fract{1}{1-(x+1).y}(mod2)
+
+
+rule 90:
+boolean (p,q,r) |-> p xor r
+algebraic ((p,q,r) |-> (p+r)mod2
+
+fract{1}{1-(x+fract{1}{x}.y}(mod2)
+
+
+rule102
+q xor r
+(q+r)mod2
+
+
+
+
+rule110
+(q and (not p)) or (q xor r)
+(q+r+qr+pqr)mod2
+
+
+
+
+rule 150:
+p xor q xor r
+(p+q+r)mod 2
+
+fract{1}{1-(x+fract{1}{x}+1).y}(mod2)
+
+
+rule 250:
+p or r
+p+r - pr
+
+totalistic: 1d = avg of cell, lhs, rhs. 2d 
+
+
+rule254:
+p or q or r
+((p+q - pq)+r) - ((p+q - pq).r)
+
+
+
+
+
+
+
+0,1,4,5,18,19,2,23,32,33,36,37,50,51,54,55,72,73,76,77,90,91,94,95,104,105,108,109,122,123,126,127,128,129,132,133,146,147,150,151,160,164,165,178,179,182,183,200,201,204,205,218,219,222,223,233,236,237,250,251,254 ans 255
+
+
+
+lead to this discovery:
+
+https://oeis.org/ 
+example:
+
+
+
+Maya legends routinely concern themselves with regeneration & transformation.
+Maya legends routinely concern themselves with regeneration and transformation. The myth of The Xtabay recounts the lives of Xkeban, the sinner, and Utz-Colel, the virtuous, who transform in death. Xkeban, though considered a sinner for having sex outside of marriage, was more virtuous than the self-righteous and cold Utz-Colel and, when she died, filled the village with sweet perfume and exotic wildflowers known as Xtabentun grew on her grave. Nothing grew on the grave of Utz-Colel but she was transformed into the cactus without scent, the Tzacam, and the flower known as the Xtabay who also appears as a kind of succubus who waylays unsuspecting traveling men, seduces them, and destroys them.
+
+
+The legend of The Maquech tells the story of the princess Cuzan who falls in love with a man her father does not approve of. A shaman turns Cuzan's lover into an insect which she then keeps with her always. The tale of Nicte Ha follows along the same lines in which the lovers are transformed into a beautiful red bird and a divine lotus which live eternally by the banks of a sacred cenote. The famous Popol Vuh, of course, also follows this same theme.
+
+The Bacabs reflect the cyclical vision of the Maya & the improbability that this particular culture could devise a calendar system which aimed at any certain end of the world.
+There were four deities in particular, known as The Bearers of the Years (the Bacab) who held the four cardinal points of the sky and imbued a particular year with certain energy. Muluc was the Bacab of the east and his years were always positive in energy. He was associated with the color red. Kan was the Bacab of the south, associated with yellow, and also brought good fortune. Ix, the Bacab of the north was linked with the color white while Cauac, The Bacab of the west's color was black and both of them brought negative energy and bad fortune to the year.
+
+The Bearers of the Years changed each year as the dominant deity of that particular cycle of months and stones were very carefully rearranged on the statues in the villages and cities to denote the change. The Bacabs further reflect the cyclical vision of the Maya and the improbability that this particular culture could devise a calendar system which aimed at any certain end of the world.
+
+
+While ancient Mayan culture offered various calendar types, the one that baffled scholars the most was this 819-day calendar discovered in glyphic texts. Researchers have long believed this calendar was associated with planetary movements, especially the synodic periods—when a planet appears visually to return to the same location in the sky, as seen from Earth—of key planets. However, each planet moves quite differently and matching up multiple planets into an 819-day span didn’t seem to make sense.
+
+But it does when you look at it over 16,380 days (roughly 45 years), not just 819 days. That’s a total of 20 819-day timelines.
+
+Mercury was always the starting point for the tricky timeline because its synodic period—117 days—matches nicely into 819. From there, though, we need to start extrapolating out the 819 number, and if you chart 20 cycles of 819, you can fit every key planet into the mix.
+
+And Mars may be the kicker for the overall length. With a 780-day synodic period, 21 periods match exactly to 16,380, or 20 cycles of 819. Venus needs seven periods to match five 819-day counts, Saturn has 13 periods to fit with six 819-day counts, and Jupiter 39 periods to hit 19 819-counts.
+
+“Rather than limit their focus to any one planet,” the authors write, “the Maya astronomers who created the 819-day count envisioned it as a larger calendar system that could be used for predictions of all the visible planet’s synod periods, as well as commensuration points with their cycles in the Tzolk’in and Calendar Round.”
+
+Below is the list of the 20 nahales and their respective calendar name, both in the Yucatecan Mayan language (in italics) and the highland Mayan language of Kaqchikel (in bold).
+
+Crocodile – Imix – Imox
+Wind – Ik – Iq
+Night – Akbal – Aqabal
+Sky – Kan – Kat
+Snake – Chikchan – Kaan
+Death – Kimi – Kame
+Deer – Manik – Kiej
+Venus – Lamat – Qaniel
+Moon – Muluk – Toj
+Dog – Ok – Tzi
+Howler monkey, ancestor – Chuwen – Baatz
+Tooth/Jaw – Eb – E
+Maize – Ben – Aaj
+Jaguar – Ix – Ix-balaam
+Eagle – Tzikin – Men
+Candle – Kib – Ajmaq
+Earth – Kaban – N’oj
+Flint, obsidian – Tijax
+Storm – Kawak – Kawoq
+Lord – Ajaw – Ajpu
+
+Imix
+Ik’
+Ak’bal
+K’an
+Chikchan
+Kimi
+Manik
+Lamat
+Muluk
+Ok
+Chuen
+Eb
+Ben
+Ix
+Men
+K’ib
+Kaban
+Etznab
+Kauak
+Ajau
+
+Pop – Mat (symbol of community and marriage)
+Uo ’- Frog
+Zip – Red
+Sots – Bat
+Tsek – no translation is known
+Xul – Dog
+Yaxkin – first sun (or green)
+Mol – Water or Jade
+Ch’en – Cave or well
+Yax – Green or first
+Sak – White
+Keh – Red (or maybe Deer)
+Mak – To close, to cover
+Kankin – Yellow Sun
+Muan – The moaning bird (owl relative)
+Pax – Planting time
+K’ayab – Turtle
+Kumk’u – Ripe Corn
+Uayeb – Unfortunate or unnamed days
+
+Pop
+Uo ’
+Zip
+Sots
+Tsek
+Xul
+Yaxkin
+Mol
+Ch’en
+Yax
+Sak
+Keh
+Mak
+Kankin
+Muan
+Pax
+K’ayab
+Kumk’u
+Uayeb
+
+
+By taking five repetitions of the long count, they make up the great cycle of 26,000 tunes equivalent to 25,626.8 years, very close to the period of precession that equals 25,700 Earth years.
+
+The 18-month lunar count, or 531 days, is the period in which 4 total solar eclipses or 4 total lunar eclipses can occur, four eclipses at regular intervals of 6 lunar months.
+
+
+Chol Q’ij – K’iche’ Tzolk’in – Yucatec Mayan
+B’ATZ’ 	
+E 	 
+AJ  	
+I’X  	
+TZ’IKIN  	
+AJMAQ 	
+NO’J  	
+TIJAX  	
+KAWOQ  	
+AJPU’  
+IMOX  	
+IQ’  	
+AQ’AB’AL  	
+K’AT  	
+KAN  	
+KAME  	
+KEJ  	
+Q’ANIL  	
+TOJ  	
+TZ’I’  	
+
+ CHUWEN
+EB’
+B’EN
+IX
+MEN
+K’IB’
+KAB’AN
+ETZ’NAB’
+KAWAK
+AJAW
+IMIX’
+IK’
+AK’B’AL
+K’AN
+CHIKCHAN
+KIMI
+MANIK’
+LAMAT
+MULUK
+OK
+
+
+Table 3: Chol Q’ij Calendar Day Names and Numbers B’ATZ’
+E
+AJ
+I’X
+TZ’IKIN
+AJMAQ
+NO’J
+TIJAX
+KAWOQ
+AJPU’
+IMOX
+IQ’
+AQ’AB’AL
+K’AT
+KAN
+KAME
+KEJ
+Q’ANIL
+TOJ
+TZ’I’
+1 2 3 4 5 6 7 8 9 10 11 12 13 1 2 3 4 5 6 7
+8 9 10 11 12 13 1 2 3 4 5 6 7 8 9 10 11 12 13 1
+2 3 4 5 6 7 8 9 10 11 12 1 2 3 4 5 6 7 8
+9 10 11 12 13 1 2 3 4 5 6 7 8 9 10 11 12 13 1 2
+3 4 5 6 7 8 9 10 11 12 13 1 2 3 4 5 6 7 8 9
+10 11 12 13 1 2 3 4 5 6 7 8 9 10 11 12 13 1 2 3
+4 5 6 7 8 9 10 11 12 13 1 2 3 4 5 6 7 8 9 10
+11 12 13 1 2 3 4 5 6 7 8 9 10 11 12 13 1 2 3 4
+5 6 7 8 9 10 11 12 13 1 2 3 4 5 6 7 8 9 10 11
+12 13 1 2 3 4 5 6 7 8 9 10 11 12 13 1 2 3 4 5
+6 7 8 9 10 11 12 13 1 2 3 4 5 6 7 8 9 10 11 12
+13 1 2 3 4 5 6 7 8 9 10 11 12 13 1 2 3 4 5 6
+7 8 9 10 11 12 13 1 2 3 4 5 6 7 8 9 10 11 12 13
+
+Table 1: Haab Months and Days Pop Wo’ Sip Sotz’ Sek Xul Yaxk’in
+Mol
+Ch’en
+Yax
+Sak’
+Keh
+Mak
+K’ank’in
+Muwan
+Pax
+K’ayab
+Kumk’u
+Wayeb
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11
+12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12
+13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13
+14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14
+15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15
+16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16
+17 17 17 17 17 17 17 17 17 17 17 17 17 17 17 17 17 17
+18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18
+19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19
+
+
+Maya Dates and the Calendar
+Some of the earliest advances in decipherment were made in terms of interpreting dates recorded in Maya texts. Like other Mesoamerican cultures, the Maya used several independent but overlapping calendars to track time. The first, which is based on a 260-day repeating cycle known as the tzolk'in, functioned primarily as a mechanism for divination and prophecy. A second calendar, the haab', is 365 days in length and is based on the solar year. The two were used concurrently and together created a 52-year cycle. Throughout much of Mesoamerica, the beginning of this 52-year period was celebrated with a number of rituals, including the extinguishing of old fires, the lighting of new fires, the dedication of new temples, and other renovation or renewal ceremonies.
+
+The tzolk'in, or ‘count of days’, plays a significant role in the Maya codices. It consists of 20 named days, represented by the glyphs seen below, and a number (or coefficient) ranging from 1 to 13. Each day may be paired with each coefficient, resulting in a 260-day repeating cycle that begins with the first coefficient (1) and the first day name (Imix). The next day would be 2 Ik’, followed by 3 Ak’b’al, 4 K’an, 5 Chikchan, 6 Kimi, 7 Manik’, 8 Lamat, 9 Muluk, 10 Ok, 11 Chuwen, 12 Eb’, and 13 B’en. Since there are no coefficients above 13, the day following 13 B’en is 1 Ix, followed by 2 Men, 3 Kib’, etc. The last day in the cycle is 13 Ahaw (day 260), after which it starts over again with 1 Imix.
+
+Some of the day glyphs had more than one variant, as can be seen from the illustration (examples include Kimi and Kawak).
+
+
+Days of the Maya tzolk'in.
+
+The haab' is composed of 18 months of 20 days (represented by the glyphs seen below) and a final month of five days, known as Wayeb’. This creates a period of 365 days, which approximates the seasonal or tropical year of 365.2422 days. The days of the haab' were counted in much the same way as we count the days of our months, except that they were numbered from 0 to 19 during the Classic period and from 1 to 20 during the Late Postclassic and Colonial periods. During the Classic period, the first day of the year corresponded to 0 Pop; this was followed by 1 Pop, 2 Pop, 3 Pop, and so on to the last day of the month (19 Pop). The next month began on 0 Wo, followed by 1 Wo, 2 Wo, etc. The last day of the year corresponded to 4 Wayeb’.
+
+
+Months of the Maya haab'.
+
+This is the interpretation of the haab' that we follow, but not all epigraphers (those who study Maya hieroglyphic writing) would agree with this analysis. Rather, some believe that the “seating” of a month (indicated by “0” in the preceding paragraph) refers to the twentieth day of the preceding month rather than to the first day of a new month. This interpretation is challenged in a paper presented by Victoria Bricker in 1989 in which she provided compelling evidence in support of the interpretation discussed here.
+
+The tzolk'in and the haab' were combined to create a 52-year period known as the Calendar Round. A Calendar Round designation consists of a tzolk'in date followed by a haab' date—for example, 1 Ahaw 3 Pop. To reach the next date in the series, one moves forward one position in the tzolk'in (to 2 Imix) and one position in the haab'(to 4 Pop). This combination of dates will not occur again until 18,980 days, or 52 years, have passed.
+
+Because of the way the two calendars are structured, only four of the 20 named days can correspond with any particular haab' date. The four days that co-occur with the first day of each year (0 Pop during the Classic period and 1 Pop during the Late Postclassic period) are known as yearbearers. At least three different calendars (incorporating different yearbearer sets) were used in the Maya area at different times in the past. The Classic set pairs the days Ik’, Manik’, Eb’, and Kab’an with 0 Pop (i.e., 1 Ik’ 0 Pop is followed one year later by 2 Manik’ 0 Pop; the following year begins on 3 Eb’ 0 Pop, and the year after that on 4 Kab’an 0 Pop). This is the set that occurs in the Dresden Codex; it may be seen, for example, in the yearbearer almanac on pages 25-28. Another set, known as the Puuc or Campeche yearbearers after the area of the Yucatán peninsula where it was first identified, is based on the days Ak’b’al, B’en, Lamat, and Etz’nab’. A third yearbearer set, named after the site of Mayapán, involves a shift to the days K’an, Muluk, Ix, and Kawak, which are paired with 1, rather than 0, Pop. This system came about by delaying New Year’s day in the Classic period calendar by two days and renaming it 1 Pop. Although the three sets can be seriated chronologically to some extent, they overlap in use at certain sites and certain points in time. Both the Mayapán and Classic period set are represented in the Madrid Codex—the Mayapán yearbearers are featured in the almanacs on Madrid 24c-25c and 34-37, for example, whereas the Classic period set is represented in the almanacs on Madrid 65-73b and Madrid 99b-100b.
+
+In addition to these calendrical cycles, the Maya also made use of a calendar known as the Long Count, which places dates in linear rather than cyclical time. The Long Count calendar was established during the Preclassic era, perhaps by the Olmec, and appears to have been astronomically motivated. The beginning of the current era (August 11, 3114 B.C.) may be linked to a solar zenith passage in the southern Maya area, whereas the end of the era (December 21, A.D. 2012) corresponds to the date of a winter solstice. Although not all Mayanists agree on the best means of correlating the Maya and Christian calendars, the two solutions preferred by most epigraphers today differ from each other by only two days. An overview of the correlation question may be found in The Ancient Maya by Robert Sharer.
+
+The Long Count is based on units of 20, rather than 10 as we use, and is organized as follows: The smallest unit is the k’in, which is equivalent to one day. A winal is equal to 20 k’ins, or 20 days. Rather than consisting of 20 winals, the tun deviates from this system; it is equal to 18 winals, or 360 days, which is a close approximation of the length of the solar year. K’atuns are equal to 20 tuns, or 7200 days (just short of 20 years), whereas b’ak’tuns equal 20 k’atuns (144,000 days), which is almost 400 years in length.
+
+Four symbols are used in the Maya codices to represent the numerals: a shell sign for zero; a dot for one; a bar for five; and a moon sign for 20 (see Figure a below). Numbers from 1-19 may be formed by combining bars and dots as necessary. For larger numbers, however, this system becomes impractical, and positional notation is used instead. Long Count dates in the codices are represented in this manner (Figure b), with the smallest unit (the k’in) appearing at the bottom of the column. A different system of notation is used in the monumental inscriptions, where the units of time (b’ak’tun, k’atun, etc.) are represented by period glyphs. These glyphs may be either symbolic (geometric) in form or expressed by “head variants.” In either case, the coefficient is attached directly to the period glyph, as opposed to the system used in the codices which relies strictly on place-value notation (Figure c).
+
+
+
+Epigraphers have developed a shorthand convention for writing Long Count dates, which is similar to the abbreviations we use to write dates (e.g., 2/22/01). An example involves the date represented in Figure b, which would be transcribed as 9.5.15.0.2 (with 9 representing the number of b’ak’tuns, 5 the number of k’atuns, 15 the number of tuns , etc.). This corresponds to April 17, A.D. 549 in the Western calendar.
+
+The Long Count is based on a cycle of 13 b’ak’tuns (or 5125 years), which is more than sufficient to account for any event within the recorded history of Maya culture. Long Count dates are generally accompanied by a Calendar Round permutation. For the example given previously (i.e., 9.5.15.0.2), the corresponding Calendar Round date would be 5 Ik’ 5 Wo. Each Long Count date may be associated with one and only one Calendar Round date, although the reverse is not true. The combination of the two defines a date absolutely with reference to a mythological starting date. This date is 13.0.0.0.0 4 Ahaw 8 Kumk’u, or August 11, 3114 B.C. according to the correlation that we use. (The other common correlation places 4 Ahaw 8 Kumk’u on August 13, 3114 B.C.).
+
+Sources consulted:
+V. Bricker 1989:10-11
+V. Bricker 1997b
+Edmonson 1976
+Edmonson 1988:14; 100; 119
+Sharer 1994:573-575
+Thompson 1960:149
+
+

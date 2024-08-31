@@ -1,0 +1,71 @@
+import numpy as np 
+import matplotlib.pyplot as plt
+
+X = np.array([[1,1], [2,2], [3,1], [8,8], [, 9], [9, 9]])
+Y = ['red', 'red', 'red', 'blue', 'blue', 'blue']
+
+plt.figure()
+plt.scatter(X[:, 0], X[:, 1], s = 170, color = Y[:])
+
+t1 = plt.Polygon(X[:3,:], color=Y[0])
+plt.gca().add_patch(t1)
+
+t2 = plt.Polygon(X[3:6,:], color=Y[3])
+plt.gca().add_patch(t2)
+
+
+
+
+const uint8_t IMAGES[][8] = {
+{
+  0b00000000,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b00000000
+}};
+const int IMAGES_LEN = sizeof(IMAGES)/8;
+
+
+
+idea:
+
+const int row[8] = {
+  2, 7, 19, 5, 13, 18, 12, 16
+};
+
+const int col[8] = {
+  6, 11, 10, 3, 17, 4, 8, 9
+};
+
+
+int pixels[8][8];
+
+   for (int x = 0; x < 8; x++) {
+       for (int y = 0; y < 8; y++) {
+         pixels[x][y] = HIGH;
+	   }
+      }
+
+
+void displayImage(const byte* image) {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      display.setLed(0, i, j, bitRead(image[i], 7 - j));
+    }
+  }
+}
+
+int i = 0;
+
+void loop() {
+  displayImage(IMAGES[i]);
+  if (++i >= IMAGES_LEN ) {
+    i = 0;
+  }
+  delay(333);
+}
+plt.show()

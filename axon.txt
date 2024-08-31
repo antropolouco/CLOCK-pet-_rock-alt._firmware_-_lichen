@@ -1,0 +1,77 @@
+f = 1 / ( 2π × √( L × C ))
+
+At resonance, the impedance of the inductance and capacitance are equal.  For the above example, resonance is 503Hz for both circuits.  It's easy to determine the reactance of the capacitor and inductor using the traditional formulae ...
+
+XL = 2π × L × f
+XL = 2π × 1 × 503 = 3.16 kΩ
+
+XC = 1 / ( 2π × C × f )
+XC = 1 / ( 2π × 100n × 503 ) = 3.16 kΩ
+In the case of series resonance, the two impedances are equal and the signal has opposite phase through each, so they cancel leaving only the stray impedances (winding resistance and capacitor ESR - equivalent series resistance).  The result in the example shown is that the impedance across the series LC network is a little over 100Ω.  For parallel resonance, the two impedances also have opposite phase, but now they cancel in such a way as to appear to be an open circuit.  Again, this is limited by the inductor's parallel resistance (representing core loss) and by any leakage through the capacitor.
+
+Because of the inevitable losses, the series circuit can't achieve an infinite notch depth, and the parallel circuit cannot achieve 0dB insertion loss at resonance.  The notch depth is limited to -34dB (not infinite), and the maximum for the bandpass filter is -1.58dB (not zero).  We can calculate that for the series circuit, the total resistance of the series tuned circuit is about 204Ω, and for the parallel tuned circuit it's around 50k.  You want proof of that?
+
+VD = ( R1 + R2 ) / R2
+VD = ( 10k + 204 ) / 204 = 50 dB = 20 × log( 50 ) = 34dB
+I leave it to the reader to do the same calculation for the parallel tuned circuit (and yes, it gives the result I measured  ).  While you don't need to remember all of this, you do need to be aware of the limitations.  That way, you won't be quite so puzzled when you see some of the effects of using gyrators (or even inductors) in real circuits.  This really starts to show up when you use tunable filters based on gyrators, and you'll see the Q and peak amplitude change as the gyrator's inductance is varied.  This is because the Q of the circuit is changed because of the effective parallel resistance, represented by R2.
+
+Determining the Q is (supposedly) simple, but the formulae provided in most texts are often wildly inaccurate.  Q is measured by taking the centre frequency (503Hz in the example above).  Then the -3dB frequency above and below resonance are determined, providing the bandwidth.  With the Figure 4.1 circuit, the bandpass bandwidth is 192Hz, and Q is simply ...
+
+Q = fo / BW
+Q = 503 / 192 = 2.62
+When used as a series resonant circuit, the Q is completely different!  The same formula is used, but the notch filter has a much higher Q.  The bandwidth of the notch is 31.8Hz, so Q is 15.8.  The determination of Q is always an approximation, and while a calculated value is usually accurate enough, if you need to know the exact value it can only be done by measurement (either on the workbench or using a simulator).At resonance, the impedance of the inductance and capacitance are equal.  For the above example, resonance is 503Hz for both circuits.  It's easy to determine the reactance of the capacitor and inductor using the traditional formulae ...
+
+XL = 2π × L × f
+XL = 2π × 1 × 503 = 3.16 kΩ
+
+XC = 1 / ( 2π × C × f )
+XC = 1 / ( 2π × 100n × 503 ) = 3.16 kΩ
+In the case of series resonance, the two impedances are equal and the signal has opposite phase through each, so they cancel leaving only the stray impedances (winding resistance and capacitor ESR - equivalent series resistance).  The result in the example shown is that the impedance across the series LC network is a little over 100Ω.  For parallel resonance, the two impedances also have opposite phase, but now they cancel in such a way as to appear to be an open circuit.  Again, this is limited by the inductor's parallel resistance (representing core loss) and by any leakage through the capacitor.
+
+Because of the inevitable losses, the series circuit can't achieve an infinite notch depth, and the parallel circuit cannot achieve 0dB insertion loss at resonance.  The notch depth is limited to -34dB (not infinite), and the maximum for the bandpass filter is -1.58dB (not zero).  We can calculate that for the series circuit, the total resistance of the series tuned circuit is about 204Ω, and for the parallel tuned circuit it's around 50k.  You want proof of that?
+
+VD = ( R1 + R2 ) / R2
+VD = ( 10k + 204 ) / 204 = 50 dB = 20 × log( 50 ) = 34dB
+I leave it to the reader to do the same calculation for the parallel tuned circuit (and yes, it gives the result I measured  ).  While you don't need to remember all of this, you do need to be aware of the limitations.  That way, you won't be quite so puzzled when you see some of the effects of using gyrators (or even inductors) in real circuits.  This really starts to show up when you use tunable filters based on gyrators, and you'll see the Q and peak amplitude change as the gyrator's inductance is varied.  This is because the Q of the circuit is changed because of the effective parallel resistance, represented by R2.
+
+Determining the Q is (supposedly) simple, but the formulae provided in most texts are often wildly inaccurate.  Q is measured by taking the centre frequency (503Hz in the example above).  Then the -3dB frequency above and below resonance are determined, providing the bandwidth.  With the Figure 4.1 circuit, the bandpass bandwidth is 192Hz, and Q is simply ...
+
+Q = fo / BW
+Q = 503 / 192 = 2.62
+When used as a series resonant circuit, the Q is completely different!  The same formula is used, but the notch filter has a much higher Q.  The bandwidth of the notch is 31.8Hz, so Q is 15.8.  The determination of Q is always an approximation, and while a calculated value is usually accurate enough, if you need to know the exact value it can only be done by measurement (either on the workbench or using a simulator).
+
+Assume a suitable inductor, fed from a 12V supply with a 1k limiting resistor (Rs).  In the inductor, the rise of current is suppressed by the magnetic coupling.  Lenz's law states that "An induced electromotive force (EMF) always gives rise to a current whose magnetic field opposes the original change in magnetic flux." In other words, the application of a voltage causes a current to flow that creates a magnetic field, which in turn generates a back EMF in the inductor that opposes the externally applied voltage.  The instantaneous voltage at the inductor terminals is the full external voltage, and as current increases through the inductor the voltage will fall.  After a period of time that depends on the inductance, the current through the inductor will be 12mA (12V / 1k) and the voltage across it will be zero.
+
+The above assumes an ideal inductor, and we know they don't exist.  As a result, the voltage can only fall to a final figure that depends on the external resistance (R1 - 1k) and the coil's resistance - let's say 100Ω (R1).  The minimum voltage across the coil is therefore just under 1.1V ...
+
+VD = ( Rs + R1 ) / R1     Where VD is the voltage division, Rs is the external resistance and R2 is the coil's resistance
+VD = ( 1k + 100 ) / 100 = 11
+Coil voltage = supply voltage / VD = 1.0909V
+Now, let's see what the gyrator does, and an ideal opamp will be assumed for the time being, but using the same resistances as discussed above.  When the input signal is applied, C1 is discharged.  We know from my 'first rule of opamps' (see Designing With Opamps) that an opamp will try to make both inputs the same voltage.  Since C1 is discharged, it acts like a short circuit (for an instant in time), so the opamp's output is the same as its non-inverting input, and the opamp and surrounding parts appear to be an open circuit.  See the drawing below so that you can follow the logic.  Initially we will ignore Rd (a damping resistor) - more about that soon.  The gyrator inductor has a value of 10H.  The 'ideal' opamp has no limitations on its supply or output voltage, and has infinite open loop gain and bandwidth.  Unfortunately, it's a component restricted to (some) simulators, and it doesn't exist in real life.
+
+
+maybe ry 1 octavw axon? could be super efficient:
+
+fo Nominal	C1 *	C2 *	R1 *	R2 *	Inductance	fo Calculated
+32	120 nF	4.7 µF	75 kΩ	560 Ω	5.04 H	32.7 Hz
+63	56 nF	3.3 µF	68 kΩ	510 Ω	1.94 H	62.9 Hz
+125	33 nF	1.5 µF	62 kΩ	510 Ω	1.14 H	121.7 Hz
+250	15 nF	820 nF	68 kΩ	470 Ω	479 mH	252.4 Hz
+500	8.2 nF	390 nF	68 kΩ	470 Ω	262 mH	498 Hz
+1k	3.9 nF	220 nF	62 kΩ	470 Ω	113 mH	1.0 kHz
+2k	2.2 nF	100 nF	68 kΩ	470 Ω	70 mH	1.9 kHz
+4k	1 nF	56 nF	62 kΩ	470 Ω	29 mH	3.9 kHz
+8k	510 pF	22 nF	68 kΩ	510 Ω	18 mH	8.0 kHz
+16k	330 pF	12 nF	51 kΩ	510 Ω	8.6 mH	15.7 kHz
+Because each frequency is double the one before, it figures that inductance and capacitance will halve for each successive band.  There are errors in the values which will shift the frequencies slightly from the design point, but this is not an issue.  The circuit (like all EQ stages) is intended for response manipulation, and is not intended as a precision filter.  Some of the values are non-standard, which is always a problem when you have so many filters.  Capacitors aren't available as standard with neatly doubled/ halved values, so parallel combinations will be needed in a few places to get the right value.  I leave this to the reader, especially since this is not a construction project, but is intended to demonstrate designs and ideas.
+
+With all values as given in the schematic and table, maximum boost or cut would be quoted as ±10dB, although it measures about ±11dB.  To get ±12dB, R2 and R3 (both 2.7k in the equaliser section) can be increased to 5.6k, but this will result in greater noise.  The nominal Q is 1.57 for the filters shown, although it does vary a little in reality.  Q isn't shown in the table, but a reasonable approximation is to use the formula ...
+
+Q ≈ 2π × fo × L / R2       Which can also be written as ...
+Q ≈ XL / R2 = 1.51
+Q ≈ 2π × 1k × 113m / 470 = 1.51
+The formula shown differs from that shown in most reference material, but is closer to reality.  A simulation shows that the actual Q is somewhat lower, and I measured it in the simulator as 1.48 to 1.55 for a couple of different frequencies.  Being a rather tedious process, I didn't test all filters.  Given the nature of any graphic equaliser, small variations in Q don't amount to much.
+
+You always need to consider the noise gain in circuits such as this.  With 10 × 10k pots, the noise gain of U12 is 16dB, even though the audio gain is unity when all pots are centred.
+
+

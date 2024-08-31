@@ -1,0 +1,24 @@
+BERNOULLI	
+
+---------
+
+socket		Vref1 cv input
+
+knob		Vref1 atten
+------
+
+socket		Vref2 cv input
+
+knob		Vref2 atten
+------
+
+socket		probability cv
+
+knob		probability atten
+------
+
+socket		output
+
+------
+
+RYO logo

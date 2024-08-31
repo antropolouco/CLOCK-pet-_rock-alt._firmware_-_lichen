@@ -1,0 +1,310 @@
+lichen:
+an alt firmware for petrock.
+
+inspiration sprung whilst listening to lex fridman #314 - https://open.spotify.com/episode/4AjCs6uRUt1p4QuYZgjZFn?si=iiaC5PX2SImfZWoLbPpWSw (accessed 300923 1035)
+
+cellular automata type growth on 2 axes?
+
+
+rtc drives:
+
+selecition of chaotic/random based output dreviation:
+
+bernoulli style but branches influencing eachothers growth? using fast/simple rng and code based on basic chaos?
+
+
+
+
+elementary cellular automata:
+
+at time t = 0,1, ...,				a_i(t) = f(a_i-1(t-1),a_i(t-1),a_i+1(t-1)).	for i 'running from' -inf to inf 
+
+the simplest class of 1d cellular automata, 'elementary', are binary; i.e. can only be 0 or 1. therefore, rules based  on (lhs,cell,rhs) have 2x2x2=2^3=8 binary states for the three cells neighbouring a a given cell.  the 2^8 = 256 elemetary cellular automata indexed in format `rule[xxx] where [xxx] = (000 to 255), derived from table below:
+
+
+
+
+___________
+_nb: this one is a chaotic cellula automaton!_
+___________
+rule30: 00011110_2
+(p,q,r) |-> p xor (q or r)
+(p+q+r+qr)mod 2
+
+*used as rng for large integers sometimes... 
+___________
+
+
+rule60
+(p,q,r) |->  p xor q
+(p+q)mod2
+
+fract{1}{1-(x+1).y}(mod2)
+
+
+rule 90:
+boolean (p,q,r) |-> p xor r
+algebraic ((p,q,r) |-> (p+r)mod2
+
+fract{1}{1-(x+fract{1}{x}.y}(mod2)
+
+
+rule102
+q xor r
+(q+r)mod2
+
+
+rule110
+(q and (not p)) or (q xor r)
+(q+r+qr+pqr)mod2
+
+
+rule 150:
+p xor q xor r
+(p+q+r)mod 2
+
+fract{1}{1-(x+fract{1}{x}+1).y}(mod2)
+
+
+rule 250:
+p or r
+p+r - pr
+
+totalistic: 1d = avg of cell, lhs, rhs. 2d 
+
+
+rule254:
+p or q or r
+((p+q - pq)+r) - ((p+q - pq).r)
+
+
+all cool and worth including:
+
+0,1,4,5,18,19,2,23,32,33,36,37,50,51,54,55,72,73,76,77,90,91,94,95,104,105,108,109,122,123,126,127,128,129,132,133,146,147,150,151,160,164,165,178,179,182,183,200,201,204,205,218,219,222,223,233,236,237,250,251,254 ans 255
+
+
+
+lead to this discovery:
+
+https://oeis.org/ 
+example:
+
+https://oeis.org/A081244
+A081244		Named periods in the Mayan/Mesoamerican calendars.
+1, 20, 260, 360, 365, 7200, 18980, 144000, 2880000, 57600000, 1152000000, 23040000000
+...
+COMMENTS	The periods are named kin, winal, Tzolkin year, tun, Haab year, katun, Calendar Round, baktun, pictun, calabtun, kinchiltun, alautun. With approximately 63 million years, the alautun is probably the longest named period in any calendar.
+...
+AUTHOR		Ralf Stephan, Mar 12 2003, Sequence A081244 in The On-Line Encyclopedia of Integer Sequences (2010), published electronically at https://oeis.org (accessed 300923 1353)
+
+
+
+the above gives a table of n, a(n) for n=0..11.  
+
+
+`
+The Long Count is really a mixed base-20/base-18 representation of a number, representing the number of days since the start of the Mayan era. It is thus akin to the Julian Day Number.
+kin (day) [=1]										0 to 19
+uinal		(1 uinal = 20 kin = 20 days)						0 to 17
+tun		(1 tun = 18 uinal = 360 days = approx. 1 year)				0 to 19
+katun		(1 katun = 20 tun = 7,200 days = approx. 20 years)			0 to 19
+baktun		(1 baktun = 20 katun = 144,000 days = approx. 394 years)		1 to 13
+[not technically part of long count or ancient mayan names:]
+pictun		(1 pictun = 20 baktun = 2,880,000 days = approx. 7885 years		
+calabtun	(1 calabtun = 20 pictun = 57,600,000 days = approx. 158,000 years
+kinchiltun	(1 kinchiltun = 20 calabtun = 1,152,000,000 days = approx. 3 million years
+alautun		(1 alautun = 20 kinchiltun = 23,040,000,000 days = approx. 63 million years
+
+
+Logically, the first date in the Long Count should be 0.0.0.0.0, but as the baktun (the first component) are numbered from 1 to 13 rather than 0 to 12, this first date is actually written 13.0.0.0.0.
+
+The authorities disagree on what 13.0.0.0.0 corresponds to in our calendar. I have come across three possible equivalences:
+
+13.0.0.0.0 = 8 Sep 3114 BC (Julian) = 13 Aug 3114 BC (Gregorian)
+13.0.0.0.0 = 6 Sep 3114 BC (Julian) = 11 Aug 3114 BC (Gregorian)
+13.0.0.0.0 = 11 Nov 3374 BC (Julian) = 15 Oct 3374 BC (Gregorian)
+Assuming one of the first two equivalences, the Long Count will again reach 13.0.0.0.0 on 21 or 23 December AD 2012 - a not too distant future.
+
+The date 13.0.0.0.0 may have been the Mayas’ idea of the date of the creation of the world.`
+
+https://www.webexhibits.org/calendars/calendar-mayan.html (accessed 300923 1539)
+
+
+...
+the Maya calendar round:
+
+`...The tzolkin cycle and the haab cycle were combined to produce a cycle of 18,980 days, known as the calendar round. 18,980 days is a little less than 52 solar years.
+"Thus the Mayas could not simply use a tzolkin/haab date to identify a day within a period of several hundred years because there would be several days within this period with the same tzolkin/haab date. The Mayas overcame this problem by using a third dating system which enabled them to identify a day uniquely within a period of 1,872,000 days (approximately 5,125.36 solar years).`
+
+https://www.webexhibits.org/calendars/calendar-mayan.html (accessed 300923 1539)
+
+
+[incidentally,  i love this:
+`Morley [39] deciphers two long count dates (found at Palenque) as 1.18.5.4.0 and 1.18.5.3.6 (14 days apart) which are some 2,794 solar years prior to 9.0.0.0.0. Since there is no evidence that the Mayas existed before about 500 B.C., what could these early long count dates possibly be referring to?`
+]
+
+
+...
+i remember 2012:
+https://youtu.be/H56b_7LLIIE?t=122 (accessed 300923 1605)
+
+graham hancock sincerely wished the end of the world was not nigh. i now  winder, perhaps it in fact was...
+
+...
+
+
+
+maybe it ended and we're in a sim?
+
+
+simulation theory.
+we're trapped in a continuous loop that starts 2012, ends when? on date output by module?
+
+another fun date?
+
+
+hehehe....
+
+...
+
+
+maybe [x,y] outputs that are 2d cellular automata, input is jack 1, jack 2, rtc derived?
+8x8 led matrix displays yijing hexagram based on terrence mckennas mushroom laced lunacy:
+https://www.fractal-timewave.com/how_to_run.php (accessed 300923 1137)
+
+then randonly the calendar decides its endof world, counts down 19-0 in mayan glyphs then displays unicode for?
+
+out put upon unicode end of world glyph = ?
+
+
+⺒
+
+CJK Radical Snake 0x2E92
+
+.....
+
+
+
+
+
+
+
+
+
+const uint8_t IMAGES[][8] = {
+{
+  0b00000000,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b11100111,
+  0b00000000
+}};
+const int IMAGES_LEN = sizeof(IMAGES)/8;
+
+
+
+idea:
+
+const int row[8] = {
+  2, 7, 19, 5, 13, 18, 12, 16
+};
+
+const int col[8] = {
+  6, 11, 10, 3, 17, 4, 8, 9
+};
+
+
+int pixels[8][8];
+
+   for (int x = 0; x < 8; x++) {
+       for (int y = 0; y < 8; y++) {
+         pixels[x][y] = HIGH;
+	   }
+      }
+
+
+void displayImage(const byte* image) {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      display.setLed(0, i, j, bitRead(image[i], 7 - j));
+    }
+  }
+}
+
+int i = 0;
+
+void loop() {
+  displayImage(IMAGES[i]);
+  if (++i >= IMAGES_LEN ) {
+    i = 0;
+  }
+  delay(333);
+}
+
+
+
+Yijing Hexagram Symbols, U+4DC0 - U+4DFF
+0x00004DC0 to 0x00004DCF	example: 0x00004DC0 is Hexagram For the Creative Heaven  ䷀
+
+䷀ 
+
+decimal: 11100100 10110111 10000000	
+utf8:  0xE4 0xB7 0x80
+utf16: 0x4DC0
+utf32: 0x00004DC0
+
+
+likwise;
+
+
+Supplementary Multilingual Plane
+Mayan Numerals, 0x0001D2E0 - 0x0001D2FF
+example: 0x0001D2E7 is Mayan Numeral Seven
+
+C, C++, Java, Python
+\u1D2E7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
