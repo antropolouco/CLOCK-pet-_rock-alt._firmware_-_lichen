@@ -1,0 +1,107 @@
+lichen:
+an alt firmware for petrock.
+
+inspiration sprung whilst listening to lex fridman #359 - https://open.spotify.com/episode/6btFDX9xGa6yQErSNG7AMk?si=UrU5jBz3Qu2cutkOv3SncA (accessed 300923 1035)
+
+cellular automata type growth on 2 axes?
+
+
+rtc drives:
+
+selecition of chaotic/random based output dreviation:
+
+bernoulli styl but branches influencing eachotheers grwth.
+
+use fast simple rng and code based on the one opamp chaos?
+
+
+
+
+https://www.demonstrations.wolfram.com/SimplestChaoticCircuit/
+
+ it is specified by the minimum number of states (three) required for chaos: voltage across the capacitor , current through the inductor , and internal state of the memristor  (see [1]). The system equations are , , , where  is the inductance and  is unknown.
+
+
+
+elementary cellular automata:
+
+at time t== 0,1, ...,				a_i(t) = f(a_i-1(t-1),a_i(t-1),a_i+1(t-1)).	for i 'running from' -inf to inf 
+
+the simplest class of 1d cellular automata, 'elementary', are binary; i.e. can only be 0 or 1. therefore, rules based  on (lhs,cell,rhs) have 2x2x2=2^3=8 binary states for the three cells neighbouring a a given cell.  the 2^8 = 256 elemetary cellular automata indexed in format `rule[xxx] where [xxx] = (000 to 255), derived from table below:
+
+
+
+
+
+_nb: chaotic  cellula automat!_
+
+rule30: 00011110_2
+(p,q,r) |-> p xor (q or r)(p+q+r+qr)mod 2
+
+*used as rng for largev integers sometimes... 
+
+___________
+
+
+rule60
+(p,q,r) |->  p xor q
+(p+q)mod2
+
+fract{1}{1-(x+1).y}(mod2)
+
+
+rule 90:
+boolean (p,q,r) |-> p xor r
+algebraic ((p,q,r) |-> (p+r)mod2
+
+fract{1}{1-(x+fract{1}{x}.y}(mod2)
+
+
+rule102
+q xor r
+(q+r)mod2
+
+
+
+
+rule110
+(q and (not p)) or (q xor r)
+(q+r+qr+pqr)mod2
+
+
+
+
+rule 150:
+p xor q xor r
+(p+q+r)mod 2
+
+fract{1}{1-(x+fract{1}{x}+1).y}(mod2)
+
+
+rule 250:
+p or r
+p+r - pr
+
+totalistic: 1d = avg of cell, lhs, rhs. 2d 
+
+
+rule254:
+p or q or r
+((p+q - pq)+r) - ((p+q - pq).r)
+
+
+
+
+
+
+
+0,1,4,5,18,19,2,23,32,33,36,37,50,51,54,55,72,73,76,77,90,91,94,95,104,105,108,109,122,123,126,127,128,129,132,133,146,147,150,151,160,164,165,178,179,182,183,200,201,204,205,218,219,222,223,233,236,237,250,251,254 ans 255
+
+
+
+lead to this discovery:
+
+https://oeis.org/ 
+example:
+
+
